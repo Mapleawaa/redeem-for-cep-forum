@@ -16,7 +16,7 @@ export default {
       api.addCommunitySectionLink(
         {
           name: "rewards",
-          href: "/redeem-for-cep-forum/rewards",
+          href: "/my/preferences/profile#cep-rewards",
           text: i18n("redeem_for_cep_forum.sidebar_label"),
           title: i18n("redeem_for_cep_forum.sidebar_label"),
           icon: "gift",

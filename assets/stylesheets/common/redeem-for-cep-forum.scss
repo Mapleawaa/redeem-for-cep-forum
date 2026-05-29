@@ -1,0 +1,32 @@
+.cep-rewards-preferences {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--primary-low);
+}
+
+.cep-rewards-preferences__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cep-rewards-preferences__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 170px;
+  padding: 1rem;
+  border: 1px solid var(--primary-low);
+  border-radius: 0.5rem;
+  background: var(--secondary);
+}
+
+.cep-rewards-preferences__card h3 {
+  margin-top: 0;
+}
+
+.cep-rewards-preferences__card span {
+  color: var(--tertiary);
+  font-weight: 700;
+}

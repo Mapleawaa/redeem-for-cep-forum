@@ -7,11 +7,7 @@ module ::RedeemForCepForum
     before_action :ensure_logged_in
 
     def index
-      if request.format.json?
-        render json: { rewards: serialized_rewards }
-      else
-        render :index
-      end
+      render json: { rewards: serialized_rewards }
     end
 
     def redeem
@@ -106,6 +102,7 @@ module ::RedeemForCepForum
         issued_at: issued_reward&.issued_at,
         shown_once: issued_reward&.shown_once || false,
         locked_reason: locked_reason(eligible, cep_bound, issued_reward),
+        locked_label: locked_label(eligible, cep_bound, issued_reward),
       }
     end
 
@@ -115,6 +112,14 @@ module ::RedeemForCepForum
       return "not_eligible" if !eligible
 
       nil
+    end
+
+    def locked_label(eligible, cep_bound, issued_reward)
+      return "已领取" if issued_reward.present?
+      return "请先绑定 CEP 账号" if !cep_bound
+      return "暂未达成条件" if !eligible
+
+      "不可领取"
     end
 
     def issued_rewards_by_key
