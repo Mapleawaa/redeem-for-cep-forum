@@ -3,7 +3,23 @@ en:
     admin:
       site_settings:
         categories:
-          TODO_plugin_name: "Plugin Name"
+          plugins: "Plugins"
   js:
-    discourse_plugin_name:
-      placeholder: placeholder
+    redeem_for_cep_forum:
+      title: "Rewards"
+      sidebar_label: "Rewards"
+      loading: "Loading rewards..."
+      redeem: "Redeem"
+      claimed: "Claimed"
+      locked: "Locked"
+      days: "%{count} days"
+      code_title: "Your redeem code"
+      code_notice: "This code is shown once. Store it before leaving this page."
+      redeem_at_cep: "Redeem it in the CEP app under My."
+      reasons:
+        claimed: "Already claimed"
+        cep_user_not_bound: "Link your CEP account first"
+        not_eligible: "Requirement not met yet"
+      errors:
+        generic: "Unable to load rewards."
+        redeem_failed: "Unable to redeem this reward."

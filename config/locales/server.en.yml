@@ -1,1 +1,8 @@
 en:
+  redeem_for_cep_forum:
+    errors:
+      unknown_reward: "Unknown reward."
+      cep_user_not_bound: "CEP account is not linked."
+      not_eligible: "You are not eligible for this reward."
+      already_redeemed: "This reward has already been redeemed."
+      cep_api_failed: "CEP redeem API failed: %{error}."

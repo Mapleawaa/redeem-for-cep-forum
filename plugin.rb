@@ -1,21 +1,18 @@
 # frozen_string_literal: true
 
-# name: discourse-plugin-name
-# about: TODO
-# meta_topic_id: TODO
+# name: redeem-for-cep-forum
+# about: Issue CEP trial redeem codes from Discourse rewards
 # version: 0.0.1
-# authors: Discourse
-# url: TODO
+# authors: Maple
 # required_version: 2.7.0
 
-enabled_site_setting :plugin_name_enabled
+enabled_site_setting :cep_redeem_enabled
 
-module ::MyPluginModule
-  PLUGIN_NAME = "discourse-plugin-name"
+module ::RedeemForCepForum
+  PLUGIN_NAME = "redeem-for-cep-forum"
 end
 
-require_relative "lib/my_plugin_module/engine"
+require_relative "lib/redeem_for_cep_forum/engine"
+require_relative "lib/redeem_for_cep_forum/reward_registry"
 
-after_initialize do
-  # Code which should run after Rails has finished booting
-end
+register_user_custom_field_type RedeemForCepForum::RewardRegistry::CEP_USER_ID_FIELD, :integer

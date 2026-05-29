@@ -1,4 +1,40 @@
-TODO_plugin_name:
-  plugin_name_enabled:
+plugins:
+  cep_redeem_enabled:
     default: false
     client: true
+  cep_redeem_api_url:
+    default: "https://endapi.canmoe.com/api/redeem/issue"
+    client: false
+  cep_redeem_client_secret:
+    default: ""
+    client: false
+  cep_redeem_registration_days:
+    default: 7
+    min: 1
+    max: 30
+    client: false
+  cep_redeem_first_post_days:
+    default: 7
+    min: 1
+    max: 30
+    client: false
+  cep_redeem_trust_level_1_days:
+    default: 7
+    min: 1
+    max: 30
+    client: false
+  cep_redeem_trust_level_2_days:
+    default: 14
+    min: 1
+    max: 30
+    client: false
+  cep_redeem_trust_level_3_days:
+    default: 30
+    min: 1
+    max: 30
+    client: false
+  cep_redeem_trust_level_4_days:
+    default: 30
+    min: 1
+    max: 30
+    client: false
