@@ -1,4 +1,28 @@
-TODO_plugin_name:
-  plugin_name_enabled:
+redeem_for_cep_forum:
+  redeem_for_cep_forum_enabled:
     default: false
-    client: true
+  redeem_for_cep_forum_client_id:
+    default: ""
+  redeem_for_cep_forum_client_secret:
+    default: ""
+    secret: true
+  redeem_for_cep_forum_issue_url:
+    default: "https://endapi.canmoe.com/api/redeem/issue"
+  redeem_for_cep_forum_cep_user_id_field:
+    default: "user_id"
+  redeem_for_cep_forum_tl1_trial_days:
+    default: 14
+    min: 1
+  redeem_for_cep_forum_tl2_trial_days:
+    default: 30
+    min: 1
+  redeem_for_cep_forum_tl3_trial_days:
+    default: 60
+    min: 1
+  redeem_for_cep_forum_sender_username:
+    default: ""
+    type: username
+  redeem_for_cep_forum_pm_title:
+    default: "你的 CEP 体验会员兑换码"
+  redeem_for_cep_forum_pm_body_template:
+    default: "你已达到论坛信任等级 TL{trust_level}，获得 {total_days} 天 CEP 体验会员兑换码：\n\n{codes}\n\n请前往 CEP 主站「我的」页面输入兑换码完成兑换。"

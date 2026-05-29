@@ -1,1 +1,13 @@
 en:
+  site_settings:
+    redeem_for_cep_forum_enabled: "Enable CEP redeem rewards"
+    redeem_for_cep_forum_client_id: "CEP redeem API client ID"
+    redeem_for_cep_forum_client_secret: "CEP redeem API client secret"
+    redeem_for_cep_forum_issue_url: "CEP redeem API issue URL"
+    redeem_for_cep_forum_cep_user_id_field: "User custom field name containing the CEP user ID"
+    redeem_for_cep_forum_tl1_trial_days: "Trial days granted when a user reaches trust level 1"
+    redeem_for_cep_forum_tl2_trial_days: "Trial days granted when a user reaches trust level 2"
+    redeem_for_cep_forum_tl3_trial_days: "Trial days granted when a user reaches trust level 3"
+    redeem_for_cep_forum_sender_username: "Username used to send redeem code private messages. Leave blank to use the system user"
+    redeem_for_cep_forum_pm_title: "Redeem code private message title template"
+    redeem_for_cep_forum_pm_body_template: "Redeem code private message body template"

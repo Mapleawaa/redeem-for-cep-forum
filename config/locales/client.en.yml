@@ -3,7 +3,7 @@ en:
     admin:
       site_settings:
         categories:
-          TODO_plugin_name: "Plugin Name"
+          redeem_for_cep_forum: "CEP Redeem Rewards"
   js:
-    discourse_plugin_name:
-      placeholder: placeholder
+    redeem_for_cep_forum:
+      title: "CEP Redeem Rewards"
