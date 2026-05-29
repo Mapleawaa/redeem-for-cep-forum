@@ -4,14 +4,13 @@ module ::RedeemForCepForum
   class RewardsController < ::ApplicationController
     requires_plugin PLUGIN_NAME
 
-    before_action :ensure_logged_in, except: :index
+    before_action :ensure_logged_in
 
     def index
       if request.format.json?
-        ensure_logged_in
         render json: { rewards: serialized_rewards }
       else
-        render html: "", layout: "application"
+        render :index
       end
     end
 
