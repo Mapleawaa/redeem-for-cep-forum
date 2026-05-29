@@ -10,6 +10,10 @@ module ::RedeemForCepForum
       render json: { rewards: serialized_rewards }
     end
 
+    def show
+      render html: "", layout: "application"
+    end
+
     def redeem
       reward_key = params.require(:reward_key)
       reward = RewardRegistry.find(reward_key)
