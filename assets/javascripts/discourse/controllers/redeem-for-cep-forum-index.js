@@ -20,9 +20,12 @@ export default class RedeemForCepForumIndexController extends Controller {
     this.redeemingKey = reward.key;
 
     try {
-      const result = await ajax(`/redeem-for-cep-forum/rewards/${reward.key}/redeem`, {
-        type: "POST",
-      });
+      const result = await ajax(
+        `/redeem-for-cep-forum/rewards/${reward.key}/redeem`,
+        {
+          type: "POST",
+        }
+      );
 
       this.redeemCode = result.code;
       this.set("model", await ajax("/redeem-for-cep-forum/rewards"));

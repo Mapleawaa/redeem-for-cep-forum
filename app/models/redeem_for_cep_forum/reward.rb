@@ -6,7 +6,13 @@ module ::RedeemForCepForum
 
     belongs_to :user
 
-    validates :user_id, :reward_key, :cep_user_id, :trial_days, :redeem_code, :issued_at, presence: true
+    validates :user_id,
+              :reward_key,
+              :cep_user_id,
+              :trial_days,
+              :redeem_code,
+              :issued_at,
+              presence: true
     validates :reward_key, uniqueness: { scope: :user_id }
   end
 end

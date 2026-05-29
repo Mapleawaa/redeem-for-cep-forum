@@ -13,13 +13,26 @@ module ::RedeemForCepForum
     def redeem
       reward_key = params.require(:reward_key)
       reward = RewardRegistry.find(reward_key)
-      return render_json_error(I18n.t("redeem_for_cep_forum.errors.unknown_reward"), status: 404) if reward.blank?
+      if reward.blank?
+        return render_json_error(
+          I18n.t("redeem_for_cep_forum.errors.unknown_reward"),
+          status: 404,
+        )
+      end
 
       cep_user_id = current_cep_user_id
-      return render_json_error(I18n.t("redeem_for_cep_forum.errors.cep_user_not_bound"), status: 422) if cep_user_id.blank?
+      if cep_user_id.blank?
+        return render_json_error(
+          I18n.t("redeem_for_cep_forum.errors.cep_user_not_bound"),
+          status: 422,
+        )
+      end
 
       unless RewardEligibility.new(current_user).eligible?(reward)
-        return render_json_error(I18n.t("redeem_for_cep_forum.errors.not_eligible"), status: 403)
+        return render_json_error(
+          I18n.t("redeem_for_cep_forum.errors.not_eligible"),
+          status: 403,
+        )
       end
 
       trial_days = RewardRegistry.trial_days(reward)
@@ -27,7 +40,10 @@ module ::RedeemForCepForum
       DistributedMutex.synchronize("redeem-for-cep-forum:#{current_user.id}:#{reward_key}") do
         existing_reward = Reward.find_by(user_id: current_user.id, reward_key: reward_key)
         if existing_reward.present?
-          return render_json_error(I18n.t("redeem_for_cep_forum.errors.already_redeemed"), status: 409)
+          return render_json_error(
+            I18n.t("redeem_for_cep_forum.errors.already_redeemed"),
+            status: 409,
+          )
         end
 
         result = Issuer.new.issue(cep_user_id:, trial_days:)
@@ -50,10 +66,19 @@ module ::RedeemForCepForum
         )
 
         @issued_rewards_by_key = nil
-        render json: { success: true, code: result.code, reward: serialized_reward(reward_key, reward) }
+        render(
+          json: {
+            success: true,
+            code: result.code,
+            reward: serialized_reward(reward_key, reward),
+          },
+        )
       end
     rescue ActiveRecord::RecordNotUnique
-      render_json_error(I18n.t("redeem_for_cep_forum.errors.already_redeemed"), status: 409)
+      render_json_error(
+        I18n.t("redeem_for_cep_forum.errors.already_redeemed"),
+        status: 409,
+      )
     end
 
     private
@@ -89,7 +114,8 @@ module ::RedeemForCepForum
     end
 
     def issued_rewards_by_key
-      @issued_rewards_by_key ||= Reward.where(user_id: current_user.id).index_by(&:reward_key)
+      @issued_rewards_by_key ||=
+        Reward.where(user_id: current_user.id).index_by(&:reward_key)
     end
 
     def current_cep_user_id

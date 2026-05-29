@@ -15,4 +15,9 @@ end
 require_relative "lib/redeem_for_cep_forum/engine"
 require_relative "lib/redeem_for_cep_forum/reward_registry"
 
-register_user_custom_field_type RedeemForCepForum::RewardRegistry::CEP_USER_ID_FIELD, :integer
+after_initialize do
+  register_user_custom_field_type(
+    RedeemForCepForum::RewardRegistry::CEP_USER_ID_FIELD,
+    :integer,
+  )
+end

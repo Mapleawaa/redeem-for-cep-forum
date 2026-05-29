@@ -4,7 +4,9 @@ import i18n from "discourse-common/helpers/i18n";
 <template>
   <section class="redeem-for-cep-forum">
     <div class="redeem-for-cep-forum__hero">
-      <p class="redeem-for-cep-forum__eyebrow">{{i18n "redeem_for_cep_forum.title"}}</p>
+      <p class="redeem-for-cep-forum__eyebrow">
+        {{i18n "redeem_for_cep_forum.title"}}
+      </p>
       <h1>{{i18n "redeem_for_cep_forum.title"}}</h1>
     </div>
 
@@ -33,7 +35,9 @@ import i18n from "discourse-common/helpers/i18n";
           </div>
 
           {{#if reward.claimed}}
-            <button class="btn" type="button" disabled>{{i18n "redeem_for_cep_forum.claimed"}}</button>
+            <button class="btn" type="button" disabled>
+              {{i18n "redeem_for_cep_forum.claimed"}}
+            </button>
           {{else if reward.eligible}}
             <button
               class="btn btn-primary"

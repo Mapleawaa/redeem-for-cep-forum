@@ -41,14 +41,16 @@ RSpec.describe RedeemForCepForum::RewardsController do
     end
 
     it "issues and returns the code only during the first successful redeem" do
-      issuer = instance_double(RedeemForCepForum::Issuer)
+      issuer = instance_spy(RedeemForCepForum::Issuer)
       result = RedeemForCepForum::Issuer::Result.new(success?: true, code: "CEPv1.once")
 
-      expect(RedeemForCepForum::Issuer).to receive(:new).and_return(issuer)
-      expect(issuer).to receive(:issue).with(cep_user_id: 123, trial_days: 7).and_return(result)
+      allow(RedeemForCepForum::Issuer).to receive(:new).and_return(issuer)
+      allow(issuer).to receive(:issue).with(cep_user_id: 123, trial_days: 7).and_return(result)
 
       post "/redeem-for-cep-forum/rewards/registration_bonus/redeem.json"
 
+      expect(RedeemForCepForum::Issuer).to have_received(:new)
+      expect(issuer).to have_received(:issue).with(cep_user_id: 123, trial_days: 7)
       expect(response.status).to eq(200)
       expect(response.parsed_body["code"]).to eq("CEPv1.once")
 
@@ -70,10 +72,11 @@ RSpec.describe RedeemForCepForum::RewardsController do
         shown_at: Time.zone.now,
       )
 
-      expect(RedeemForCepForum::Issuer).not_to receive(:new)
+      allow(RedeemForCepForum::Issuer).to receive(:new)
 
       post "/redeem-for-cep-forum/rewards/registration_bonus/redeem.json"
 
+      expect(RedeemForCepForum::Issuer).not_to have_received(:new)
       expect(response.status).to eq(409)
       expect(response.body).not_to include("CEPv1.existing")
     end

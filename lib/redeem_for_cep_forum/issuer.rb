@@ -10,7 +10,10 @@ module ::RedeemForCepForum
     TIMEOUT_SECONDS = 10
     RETRY_DELAY_SECONDS = 2
 
-    def initialize(api_url: SiteSetting.cep_redeem_api_url, client_secret: SiteSetting.cep_redeem_client_secret)
+    def initialize(
+      api_url: SiteSetting.cep_redeem_api_url,
+      client_secret: SiteSetting.cep_redeem_client_secret
+    )
       @api_url = api_url
       @client_secret = client_secret
     end
@@ -31,7 +34,9 @@ module ::RedeemForCepForum
           retry
         end
 
-        Rails.logger.warn("[redeem-for-cep-forum] CEP redeem network error: #{e.class.name}")
+        Rails.logger.warn(
+          "[redeem-for-cep-forum] CEP redeem network error: #{e.class.name}",
+        )
         failure("network_error")
       rescue JSON::ParserError
         failure("invalid_response")

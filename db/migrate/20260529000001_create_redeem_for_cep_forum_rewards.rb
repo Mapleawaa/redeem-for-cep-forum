@@ -15,10 +15,12 @@ class CreateRedeemForCepForumRewards < ActiveRecord::Migration[7.0]
       t.timestamps
     end
 
-    add_index :redeem_for_cep_forum_rewards,
-              %i[user_id reward_key],
-              unique: true,
-              name: "idx_redeem_for_cep_forum_rewards_user_reward"
+    add_index(
+      :redeem_for_cep_forum_rewards,
+      %i[user_id reward_key],
+      unique: true,
+      name: "idx_redeem_for_cep_forum_rewards_user_reward",
+    )
     add_index :redeem_for_cep_forum_rewards, :reward_key
   end
 end
