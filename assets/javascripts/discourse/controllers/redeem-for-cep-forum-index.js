@@ -28,7 +28,7 @@ export default class RedeemForCepForumIndexController extends Controller {
       );
 
       this.redeemCode = result.code;
-      this.set("model", await ajax("/redeem-for-cep-forum/rewards"));
+      this.set("model", await ajax("/redeem-for-cep-forum/rewards.json"));
     } catch {
       this.error = i18n("redeem_for_cep_forum.errors.redeem_failed");
     } finally {

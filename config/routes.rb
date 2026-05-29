@@ -6,6 +6,5 @@ RedeemForCepForum::Engine.routes.draw do
 end
 
 Discourse::Application.routes.draw do
-  get "/rewards" => "redeem_for_cep_forum/rewards#show"
   mount ::RedeemForCepForum::Engine, at: "redeem-for-cep-forum"
 end
